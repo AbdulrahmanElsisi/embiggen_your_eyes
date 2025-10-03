@@ -11,43 +11,72 @@
     <div class="bg-gray-800 rounded-lg p-6 shadow hover:shadow-lg transition">
       <h2 class="text-xl font-bold mb-2">🌍 Earth</h2>
       <p class="text-gray-400 mb-4">High-resolution Earth observation images from satellites.</p>
-      <a href="{{ route('explore.show', ['planet' => 'earth']) }}" class="bg-blue-500 text-white px-4 py-2 rounded">Explore</a>
-
+      <div class="flex space-x-3">
+        <a href="{{ route('explore.show', ['planet' => 'earth']) }}"
+           class="bg-blue-500 text-white px-4 py-2 rounded">🔭 Explore</a>
+        <a href="{{ route('timeline', ['planet' => 'earth']) }}"
+           class="bg-green-500 text-white px-4 py-2 rounded">🕰 Timeline</a>
+      </div>
     </div>
 
     <!-- Mars -->
     <div class="bg-gray-800 rounded-lg p-6 shadow hover:shadow-lg transition">
       <h2 class="text-xl font-bold mb-2">🔴 Mars</h2>
       <p class="text-gray-400 mb-4">Gigapixel images from the Mars Reconnaissance Orbiter.</p>
-      <a href="{{ route('explore.show', ['planet' => 'mars']) }}" class="bg-blue-500 text-white px-4 py-2 rounded">Explore</a>
+      <div class="flex space-x-3">
+        <a href="{{ route('explore.show', ['planet' => 'mars']) }}"
+           class="bg-blue-500 text-white px-4 py-2 rounded">🔭 Explore</a>
+        <a href="{{ route('timeline', ['planet' => 'mars']) }}"
+           class="bg-green-500 text-white px-4 py-2 rounded">🕰 Timeline</a>
+      </div>
     </div>
 
     <!-- Moon -->
     <div class="bg-gray-800 rounded-lg p-6 shadow hover:shadow-lg transition">
       <h2 class="text-xl font-bold mb-2">🌙 Moon</h2>
       <p class="text-gray-400 mb-4">Lunar surface maps from the Lunar Reconnaissance Orbiter.</p>
-      <a href="{{ route('explore.show', ['planet' => 'moon']) }}" class="bg-blue-500 text-white px-4 py-2 rounded">Explore</a>
+      <div class="flex space-x-3">
+        <a href="{{ route('explore.show', ['planet' => 'moon']) }}"
+           class="bg-blue-500 text-white px-4 py-2 rounded">🔭 Explore</a>
+        <a href="{{ route('timeline', ['planet' => 'moon']) }}"
+           class="bg-green-500 text-white px-4 py-2 rounded">🕰 Timeline</a>
+      </div>
     </div>
 
     <!-- Jupiter -->
     <div class="bg-gray-800 rounded-lg p-6 shadow hover:shadow-lg transition">
       <h2 class="text-xl font-bold mb-2">🟠 Jupiter</h2>
       <p class="text-gray-400 mb-4">Explore stormy atmospheres and Great Red Spot imagery.</p>
-      <a href="{{ route('explore.show', ['planet' => 'jupiter']) }}" class="bg-blue-500 text-white px-4 py-2 rounded">Explore</a>
+      <div class="flex space-x-3">
+        <a href="{{ route('explore.show', ['planet' => 'jupiter']) }}"
+           class="bg-blue-500 text-white px-4 py-2 rounded">🔭 Explore</a>
+        <a href="{{ route('timeline', ['planet' => 'jupiter']) }}"
+           class="bg-green-500 text-white px-4 py-2 rounded">🕰 Timeline</a>
+      </div>
     </div>
 
     <!-- Saturn -->
     <div class="bg-gray-800 rounded-lg p-6 shadow hover:shadow-lg transition">
       <h2 class="text-xl font-bold mb-2">🪐 Saturn</h2>
       <p class="text-gray-400 mb-4">Ring structures and planetary data from NASA missions.</p>
-      <a href="{{ route('explore.show', ['planet' => 'saturn']) }}" class="bg-blue-500 text-white px-4 py-2 rounded">Explore</a>
+      <div class="flex space-x-3">
+        <a href="{{ route('explore.show', ['planet' => 'saturn']) }}"
+           class="bg-blue-500 text-white px-4 py-2 rounded">🔭 Explore</a>
+        <a href="{{ route('timeline', ['planet' => 'saturn']) }}"
+           class="bg-green-500 text-white px-4 py-2 rounded">🕰 Timeline</a>
+      </div>
     </div>
 
     <!-- Exoplanets -->
     <div class="bg-gray-800 rounded-lg p-6 shadow hover:shadow-lg transition">
       <h2 class="text-xl font-bold mb-2">✨ Exoplanets</h2>
       <p class="text-gray-400 mb-4">Discover worlds beyond our Solar System with TESS data.</p>
-      <a href="{{ route('explore.show', ['planet' => 'exoplanets']) }}" class="bg-blue-500 text-white px-4 py-2 rounded">Explore</a>
+      <div class="flex space-x-3">
+        <a href="{{ route('explore.show', ['planet' => 'exoplanets']) }}"
+           class="bg-blue-500 text-white px-4 py-2 rounded">🔭 Explore</a>
+        <a href="{{ route('timeline', ['planet' => 'exoplanets']) }}"
+           class="bg-green-500 text-white px-4 py-2 rounded">🕰 Timeline</a>
+      </div>
     </div>
   </div>
 @endsection

@@ -8,6 +8,13 @@ use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\StaticController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\TimelineController;
+use App\Http\Controllers\NasaController;
+use App\Http\Controllers\ImageSearchController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\NasaSearchController;
+
 
 // Landing Page
 Route::get('/', [LandingController::class, 'index'])->name('landing');
@@ -18,6 +25,8 @@ Route::get('/datasets', [DatasetController::class, 'index'])->name('datasets.ind
 // Explore Page (بتتفتح بس من زرار datasets)
 Route::get('/explore/{planet?}', [ExploreController::class, 'show'])->name('explore.show');
 Route::post('/ai-search', [ExploreController::class, 'aiSearch'])->name('ai.search');
+Route::get('/timeline/{planet?}', [TimelineController::class, 'show'])->name('timeline');
+Route::post('/compare', [TimelineController::class, 'compareImages'])->name('compare');
 
 
 // Resources Page
@@ -33,3 +42,13 @@ Route::post('/contact/submit', [ContactController::class, 'submit'])->name('cont
 
 
 
+Route::get('/nasa/search', [NasaController::class, 'search']);
+
+Route::get('/image-search', [ImageSearchController::class, 'show'])->name('image.search.show');
+Route::post('/image-search', [ImageSearchController::class, 'search'])->name('image.search');
+
+
+// Route::get('/nasa/search-image', [NasaSearchController::class, 'searchImage']);
+// Route::get('/nasa', function () {
+//     return view('nasa');
+// });
