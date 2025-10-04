@@ -108,8 +108,3 @@ php artisan key:generate</code></pre>
     <li>Add annotations / drawing on viewer.</li>
 </ul>
 </section>
-
-<section>
-<h2>📝 Author</h2>
-<p>Abdulrahman Elsisi</p>
-</section>
