@@ -13,6 +13,7 @@
         <a href="{{ route('landing') }}" class="font-bold text-lg">🌌 Space Explorer</a>
         <div class="space-x-6">
             <a href="{{ route('datasets.index') }}">Datasets</a>
+            <a href="{{ route('gallery') }}">Gallery</a>
             {{-- <a href="{{ route('about') }}">About</a>
             <a href="{{ route('contact') }}">Contact</a> --}}
         </div>
