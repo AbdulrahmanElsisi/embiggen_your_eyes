@@ -1,66 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# NASA Timeline Viewer & File Comparison
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A web project to explore historical images of planets over time using **OpenSeadragon**, with support for **drag & drop / paste file comparison** in iframes. Built with **Laravel (PHP)** and **JavaScript**.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🏗 Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. **OpenSeadragon Viewer**
+   - Zoomable, pannable viewer for high-resolution planet images.
+   - Slider to navigate between different years.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+2. **File Comparison**
+   - Two independent iframes to compare uploaded files.
+   - Each iframe has its own **Drop Zone**:
+     - Drag & Drop files directly.
+     - Paste images/files from clipboard.
+   - Optional **Modal** for file selection.
 
-## Learning Laravel
+3. **Interactive UI**
+   - Slider for year selection.
+   - Selected year displayed dynamically.
+   - Clean, responsive layout.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+4. **Smart Tiling with Leaflet**
+   - Load very large images efficiently by splitting them into **tiles**.
+   - Only necessary tiles are loaded based on zoom & pan.
+   - Works for maps, satellite images, or any high-resolution picture.
+   - Example setup:
+     ```javascript
+     const map = L.map('map', { crs: L.CRS.Simple, minZoom: 0, maxZoom: 5 });
+     const w = 8000, h = 6000;
+     const bounds = L.latLngBounds(map.unproject([0,h], map.getMaxZoom()), map.unproject([w,0], map.getMaxZoom()));
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+     L.tileLayer('tiles/{z}/{x}/{y}.png', { bounds: bounds, noWrap: true }).addTo(map);
+     map.setMaxBounds(bounds);
+     map.fitBounds(bounds);
+     ```
+   - Can be combined with overlays, markers, or annotations.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🗂 Project Structure
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+project/
+├─ resources/views/
+│ ├─ timeline.blade.php # Main page with viewer and comparison section
+├─ public/
+│ └─ tiles/ # Smart Tiles for Leaflet
+├─ routes/web.php # Laravel routes
+├─ app/Http/Controllers/
+│ └─ TimelineController.php
+└─ README.md
 
-### Premium Partners
+yaml
+Copy code
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+---
 
-## Contributing
+## ⚙ Setup Instructions
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. **Clone the repository**
 
-## Code of Conduct
+```bash
+git clone <repo-url>
+cd project
+Install dependencies
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+bash
+Copy code
+composer install
+npm install
+npm run dev
+Set up Laravel environment
 
-## Security Vulnerabilities
+bash
+Copy code
+cp .env.example .env
+php artisan key:generate
+Serve the application
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+bash
+Copy code
+php artisan serve
+Open your browser at http://127.0.0.1:8000/timeline.
 
-## License
+🖥 Usage
+Navigate to the timeline page.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Use the slider to select the year and update the viewer.
+
+For file comparison:
+
+Drag & drop or paste files into Left and Right Drop Zones.
+
+Or click Select Files via Modal to choose files manually.
+
+Compare files instantly in the iframes below the viewer.
+
+Use Leaflet Smart Tiling section for high-resolution image exploration.
+
+🛠 Technologies Used
+Backend: Laravel (PHP)
+
+Frontend: JavaScript, Tailwind CSS
+
+Viewer: OpenSeadragon
+
+Mapping / Tiling: Leaflet JS with Smart Tiles
+
+File Handling: Drag & Drop + Clipboard Paste support
+
+Optional: Modal for manual file selection
+
+🔮 Future Improvements
+Add Reset buttons for each Drop Zone/iframe.
+
+Integrate Python AI microservice for automatic comparison/highlighting.
+
+Support multi-file comparison.
+
+Add annotations / drawing on viewer.
