@@ -1,5 +1,5 @@
 <h1>NASA Timeline Viewer & File Comparison</h1>
-<p>A web project to explore historical images of planets over time using <strong>OpenSeadragon</strong>, with support for <strong>drag & drop / paste file comparison</strong> in iframes. Built with <strong>Laravel (PHP)</strong> and <strong>JavaScript</strong>.</p>
+<p>A web project to explore historical images of planets over time using <strong>OpenSeadragon</strong> and Smart Tiling using <strong>Leaflet </strong>, with support for <strong>drag & drop / paste file comparison</strong> in iframes. Built with <strong>Laravel (PHP)</strong> and <strong>JavaScript</strong>.</p>
 
 <section>
 <h2>🏗 Features</h2>
