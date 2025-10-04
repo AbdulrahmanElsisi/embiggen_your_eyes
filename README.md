@@ -72,6 +72,23 @@ php artisan key:generate</code></pre>
 </section>
 
 <section>
+<h2>🖥 Python & OpenCV Setup</h2>
+<p>If you want to integrate Python AI services for image comparison or highlighting, install <strong>OpenCV (cv2)</strong>:</p>
+<pre><code># Create a virtual environment (optional but recommended)
+python -m venv venv
+source venv/bin/activate   # Linux/Mac
+venv\Scripts\activate      # Windows
+
+# Install OpenCV
+pip install opencv-python
+
+# Optional: Install additional libraries
+pip install numpy flask fastapi requests
+</code></pre>
+<p>Now you can use Python scripts to process images or integrate with the Laravel backend via HTTP API.</p>
+</section>
+
+<section>
 <h2>🖥 Usage</h2>
 <ol>
     <li>Navigate to the timeline page.</li>
